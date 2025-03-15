@@ -5,11 +5,20 @@ import streamlit as st
 from babel.numbers import format_currency
 import matplotlib.pyplot as plt
 import numpy as np
+import os
 from sklearn.metrics import classification_report, confusion_matrix
 
 sns.set(style='dark')
 
-data_cleaned = pd.read_csv("data_cleaned.csv")
+# Dapatkan direktori tempat dashboard.py berada
+script_dir = os.path.dirname(os.path.abspath(__file__))
+file_path = os.path.join(script_dir, "data_cleaned.csv")
+
+# Debugging
+print("Direktori skrip:", script_dir)
+print("File di direktori:", os.listdir(script_dir))
+
+data_cleaned = pd.read_csv(file_path)
 
 with st.sidebar:
     st.title("Prediksi Kelulusan")
